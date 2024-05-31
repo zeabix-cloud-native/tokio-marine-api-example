@@ -1,4 +1,4 @@
-namespace TokioMarinApiExample.Models;
+namespace TokioMarineApiExample.Models;
 
 public class TodoItem
 {

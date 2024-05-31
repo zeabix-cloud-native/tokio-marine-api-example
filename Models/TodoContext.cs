@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace TokioMarinApiExample.Models;
+namespace TokioMarineApiExample.Models;
 
 public class TodoContext(DbContextOptions<TodoContext> options) : DbContext(options)
 {
