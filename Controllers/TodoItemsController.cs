@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TokioMarinApiExample.Models;
+using Swashbuckle.AspNetCore.Filters;
+using TokioMarineApiExample.Models;
 
-namespace TokioMarinApiExample.Controllers;
+namespace TokioMarineApiExample.Controllers;
 
 [Route("todos")]
 [ApiController]
@@ -32,6 +33,7 @@ public class TodoItemsController(TodoContext context) : Controller
     }
     
     [HttpPost]
+    [SwaggerRequestExample(typeof(CreateTodoItemDto), typeof(CreateTodoItemExample))]
     public async Task<ActionResult<TodoItemDTO>> PostTodoItem(TodoItemDTO todoDTO)
     {
         var todoItem = new TodoItem
@@ -50,6 +52,7 @@ public class TodoItemsController(TodoContext context) : Controller
     }
     
     [HttpPut("{id}")]
+    [SwaggerRequestExample(typeof(TodoItem), typeof(UpdateTodoItemExample))]
     public async Task<IActionResult> PutTodoItem(long id, TodoItem todoItem)
     {
         if (id != todoItem.Id)
@@ -79,6 +82,7 @@ public class TodoItemsController(TodoContext context) : Controller
     }
     
     [HttpPatch("{id}")]
+    [SwaggerRequestExample(typeof(JsonPatchDocument<TodoItem>), typeof(JsonPatchDocumentExample))]
     public async Task<IActionResult> PatchTodoItem(long id, [FromBody] JsonPatchDocument<TodoItem> patchDoc)
     {
         if (patchDoc == null)

@@ -22,11 +22,14 @@ This is a minimal API project built with .NET 8 (or later) that uses Swagger for
    ```sh
    dotnet restore
    dotnet build
-
    ```
 
 3. Run application
 
    ```sh
    dotnet run
+   
+## Command to generate openapi.json
+   ```sh
+   curl http://localhost:5259/swagger/v1/swagger.json -o docs/openapi.json
    ```

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using TokioMarinApiExample.Models;
+using TokioMarineApiExample.Models;
 using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,13 +16,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Tokio marine api example", Version = "v1" });
-    c.DocInclusionPredicate((_, apiDesc) =>
-    {
-        // Prepend /api/v1 to each path
-        apiDesc.RelativePath = "/api/v1/" + apiDesc.RelativePath;
-        return true;
-    });
+    c.ExampleFilters();
 });
+
+builder.Services.AddSwaggerExamplesFromAssemblyOf<Program>(); // Add this line to include examples from the current assembly
 
 var app = builder.Build();
 
@@ -30,13 +27,14 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tokio marine api example v1");
+    });
 }
 
 app.UseAuthorization();
-
-var apiV1Group = app.MapGroup("/api/v1");
-
-apiV1Group.MapControllers();
+app.UseHttpsRedirection();
+app.MapControllers();
 
 app.Run();

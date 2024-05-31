@@ -41,3 +41,5 @@
 /Users/artydev/Documents/zeabix/TokioMarineApiExample/bin/Debug/net8.0/Scrutor.dll
 /Users/artydev/Documents/zeabix/TokioMarineApiExample/bin/Debug/net8.0/Swashbuckle.AspNetCore.Filters.dll
 /Users/artydev/Documents/zeabix/TokioMarineApiExample/bin/Debug/net8.0/Swashbuckle.AspNetCore.Filters.Abstractions.dll
+/Users/artydev/Documents/zeabix/TokioMarineApiExample/obj/Debug/net8.0/TokioMarineApiExample.sourcelink.json
+/Users/artydev/Documents/zeabix/TokioMarineApiExample/bin/Debug/net8.0/docs/openapi.json
