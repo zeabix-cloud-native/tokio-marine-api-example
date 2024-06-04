@@ -14,23 +14,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TodoItemDTO"
-                  }
-                }
-              },
               "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/TodoItemDTO"
-                  }
-                }
-              },
-              "text/json": {
                 "schema": {
                   "type": "array",
                   "items": {
@@ -51,21 +35,37 @@
             "application/json-patch+json": {
               "schema": {
                 "$ref": "#/components/schemas/TodoItemDTO"
+              },
+              "example": {
+                "name": "John Doe",
+                "isComplete": true
               }
             },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/TodoItemDTO"
+              },
+              "example": {
+                "name": "John Doe",
+                "isComplete": true
               }
             },
             "text/json": {
               "schema": {
                 "$ref": "#/components/schemas/TodoItemDTO"
+              },
+              "example": {
+                "name": "John Doe",
+                "isComplete": true
               }
             },
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/TodoItemDTO"
+              },
+              "example": {
+                "name": "John Doe",
+                "isComplete": true
               }
             }
           }
@@ -74,17 +74,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/TodoItemDTO"
-                }
-              },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TodoItemDTO"
-                }
-              },
-              "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TodoItemDTO"
                 }
@@ -114,17 +104,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/TodoItemDTO"
-                }
-              },
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TodoItemDTO"
-                }
-              },
-              "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TodoItemDTO"
                 }
@@ -153,21 +133,45 @@
             "application/json-patch+json": {
               "schema": {
                 "$ref": "#/components/schemas/TodoItem"
+              },
+              "example": {
+                "id": 1,
+                "name": "Updated name",
+                "isComplete": false,
+                "secret": null
               }
             },
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/TodoItem"
+              },
+              "example": {
+                "id": 1,
+                "name": "Updated name",
+                "isComplete": false,
+                "secret": null
               }
             },
             "text/json": {
               "schema": {
                 "$ref": "#/components/schemas/TodoItem"
+              },
+              "example": {
+                "id": 1,
+                "name": "Updated name",
+                "isComplete": false,
+                "secret": null
               }
             },
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/TodoItem"
+              },
+              "example": {
+                "id": 1,
+                "name": "Updated name",
+                "isComplete": false,
+                "secret": null
               }
             }
           }
@@ -201,7 +205,14 @@
                 "items": {
                   "$ref": "#/components/schemas/Operation"
                 }
-              }
+              },
+              "example": [
+                {
+                  "value": "Updated Name",
+                  "path": "/Name",
+                  "op": "replace"
+                }
+              ]
             },
             "application/json": {
               "schema": {
@@ -209,7 +220,14 @@
                 "items": {
                   "$ref": "#/components/schemas/Operation"
                 }
-              }
+              },
+              "example": [
+                {
+                  "value": "Updated Name",
+                  "path": "/Name",
+                  "op": "replace"
+                }
+              ]
             },
             "text/json": {
               "schema": {
@@ -217,7 +235,14 @@
                 "items": {
                   "$ref": "#/components/schemas/Operation"
                 }
-              }
+              },
+              "example": [
+                {
+                  "value": "Updated Name",
+                  "path": "/Name",
+                  "op": "replace"
+                }
+              ]
             },
             "application/*+json": {
               "schema": {
@@ -225,7 +250,14 @@
                 "items": {
                   "$ref": "#/components/schemas/Operation"
                 }
-              }
+              },
+              "example": [
+                {
+                  "value": "Updated Name",
+                  "path": "/Name",
+                  "op": "replace"
+                }
+              ]
             }
           }
         },
@@ -323,11 +355,13 @@
         "properties": {
           "id": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "example": 1
           },
           "name": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "example": "todo 1"
           },
           "isComplete": {
             "type": "boolean"
