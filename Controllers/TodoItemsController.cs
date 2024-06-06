@@ -1,26 +1,33 @@
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Filters;
+using TokioMarinApiExample.Configuration;
 using TokioMarineApiExample.Models;
 
 namespace TokioMarineApiExample.Controllers;
 
 [Route("todos")]
 [ApiController]
-public class TodoItemsController(TodoContext context) : Controller
+public class TodoItemsController(TodoContext context, IOptions<MetaData> _metaData) : Controller
 {
-    
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<TodoItemDTO>>> GetTodoItems()
+    public async Task<BaseResponseDto<List<TodoItemDTO>>> GetTodoItems()
     {
-        return await context.TodoItems
+       List<TodoItemDTO> totoItems = await context.TodoItems
             .Select(x => ItemToDto(x))
             .ToListAsync();
+
+       return new BaseResponseDto<List<TodoItemDTO>>
+       {
+           data = totoItems,
+           meta_data = _metaData.Value
+       };
     }
     
     [HttpGet("{id}")]
-    public async Task<ActionResult<TodoItemDTO>> GetTodoItem(long id)
+    public async Task<ActionResult<BaseResponseDto<TodoItemDTO>>> GetTodoItem(long id)
     {
         var todoItem = await context.TodoItems.FindAsync(id);
 
@@ -28,13 +35,17 @@ public class TodoItemsController(TodoContext context) : Controller
         {
             return NotFound();
         }
-
-        return ItemToDto(todoItem);
+        
+        return new BaseResponseDto<TodoItemDTO>
+        {
+            data =  ItemToDto(todoItem),
+            meta_data = _metaData.Value
+        };
     }
     
     [HttpPost]
     [SwaggerRequestExample(typeof(CreateTodoItemDto), typeof(CreateTodoItemExample))]
-    public async Task<ActionResult<TodoItemDTO>> PostTodoItem(TodoItemDTO todoDTO)
+    public async Task<BaseResponseDto<TodoItemDTO>> PostTodoItem(TodoItemDTO todoDTO)
     {
         var todoItem = new TodoItem
         {
@@ -45,15 +56,16 @@ public class TodoItemsController(TodoContext context) : Controller
         context.TodoItems.Add(todoItem);
         await context.SaveChangesAsync();
 
-        return CreatedAtAction(
-            nameof(GetTodoItem),
-            new { id = todoItem.Id },
-            ItemToDto(todoItem));
+        return new BaseResponseDto<TodoItemDTO>
+        {
+            data =  ItemToDto(todoItem),
+            meta_data = _metaData.Value
+        };
     }
     
     [HttpPut("{id}")]
     [SwaggerRequestExample(typeof(TodoItem), typeof(UpdateTodoItemExample))]
-    public async Task<IActionResult> PutTodoItem(long id, TodoItem todoItem)
+    public async Task<ActionResult<BaseResponseDto<string>>> PutTodoItem(long id, TodoItem todoItem)
     {
         if (id != todoItem.Id)
         {
@@ -78,12 +90,16 @@ public class TodoItemsController(TodoContext context) : Controller
             }
         }
 
-        return NoContent();
+        return new BaseResponseDto<string>
+        {
+            data =  "Update success",
+            meta_data = _metaData.Value
+        };
     }
     
     [HttpPatch("{id}")]
     [SwaggerRequestExample(typeof(JsonPatchDocument<TodoItem>), typeof(JsonPatchDocumentExample))]
-    public async Task<IActionResult> PatchTodoItem(long id, [FromBody] JsonPatchDocument<TodoItem> patchDoc)
+    public async Task<ActionResult<BaseResponseDto<string>>> PatchTodoItem(long id, [FromBody] JsonPatchDocument<TodoItem> patchDoc)
     {
         if (patchDoc == null)
         {
@@ -119,11 +135,15 @@ public class TodoItemsController(TodoContext context) : Controller
             }
         }
 
-        return NoContent();
+        return new BaseResponseDto<string>
+        {
+            data =  "Update success",
+            meta_data = _metaData.Value
+        };
     }
     
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteTodoItem(long id)
+    public async Task<ActionResult<BaseResponseDto<string>>> DeleteTodoItem(long id)
     {
         var todoItem = await context.TodoItems.FindAsync(id);
         if (todoItem == null)
@@ -134,7 +154,11 @@ public class TodoItemsController(TodoContext context) : Controller
         context.TodoItems.Remove(todoItem);
         await context.SaveChangesAsync();
 
-        return NoContent();
+        return new BaseResponseDto<string>
+        {
+            data =  "Delete success",
+            meta_data = _metaData.Value
+        };
     }
     
     private bool TodoItemExists(long id)

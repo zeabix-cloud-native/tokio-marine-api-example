@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using TokioMarineApiExample.Models;
 using Swashbuckle.AspNetCore.Filters;
+using TokioMarinApiExample.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Tokio marine api example", Version = "v1" });
     c.ExampleFilters();
 });
+builder.Services.Configure<MetaData>(builder.Configuration.GetSection("MetaData"));
 
 builder.Services.AddSwaggerExamplesFromAssemblyOf<Program>(); // Add this line to include examples from the current assembly
 

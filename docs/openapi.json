@@ -371,6 +371,31 @@
           },
           "isComplete": {
             "type": "boolean"
+          },
+          "meta_data": {
+            "type": "object",
+            "properties": {
+              "exposure": {
+                "type": "string",
+                "example": "External"
+              },
+              "apiType": {
+                "type": "string",
+                "example": "REST"
+              },
+              "authenMethod": {
+                "type": "string",
+                "example": "Oauth2.0"
+              },
+              "environment": {
+                "type": "string",
+                "example": "Development"
+              },
+              "infrastructure": {
+                "type": "string",
+                "example": "On-premises"
+              }
+            }
           }
         },
         "additionalProperties": false

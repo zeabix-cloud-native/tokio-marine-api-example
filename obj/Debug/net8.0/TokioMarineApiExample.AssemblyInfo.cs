@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TokioMarineApiExample")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e9fc4cc03c9c1e061de7f3418f5a2c240232f941")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fc4541bd449fab7fa01f1497cbee0183492b2168")]
 [assembly: System.Reflection.AssemblyProductAttribute("TokioMarineApiExample")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TokioMarineApiExample")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
