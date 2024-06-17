@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/artydev/Documents/zeabix/TokioMarineApiExample/TokioMarineApiExample.csproj": {}
+    "C:\\inetpub\\todo2\\tokio-marine-api-example\\TokioMarineApiExample.csproj": {}
   },
   "projects": {
-    "/Users/artydev/Documents/zeabix/TokioMarineApiExample/TokioMarineApiExample.csproj": {
+    "C:\\inetpub\\todo2\\tokio-marine-api-example\\TokioMarineApiExample.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/artydev/Documents/zeabix/TokioMarineApiExample/TokioMarineApiExample.csproj",
+        "projectUniqueName": "C:\\inetpub\\todo2\\tokio-marine-api-example\\TokioMarineApiExample.csproj",
         "projectName": "TokioMarineApiExample",
-        "projectPath": "/Users/artydev/Documents/zeabix/TokioMarineApiExample/TokioMarineApiExample.csproj",
-        "packagesPath": "/Users/artydev/.nuget/packages/",
-        "outputPath": "/Users/artydev/Documents/zeabix/TokioMarineApiExample/obj/",
+        "projectPath": "C:\\inetpub\\todo2\\tokio-marine-api-example\\TokioMarineApiExample.csproj",
+        "packagesPath": "C:\\Users\\azureuser\\.nuget\\packages\\",
+        "outputPath": "C:\\inetpub\\todo2\\tokio-marine-api-example\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/artydev/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\azureuser\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -78,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
